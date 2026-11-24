@@ -1,0 +1,12 @@
+#!name=G1 Ultra Free 1M (20TB & 30TB)
+#!desc=Mở khóa Google One AI Ultra 20TB & 30TB Free 1 tháng (1month_eft.acq) cho iOS Shadowrocket
+#!system=ios
+
+[Rule]
+AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT-NO-DROP
+
+[Script]
+g1-free = type=http-response,pattern=^https:\/\/one\.google\.com\/ai\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Tugle07/g1-free/main/g1-free.js
+
+[MITM]
+hostname = %APPEND% one.google.com
